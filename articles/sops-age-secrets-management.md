@@ -3,7 +3,7 @@ title: "個人開発のシークレット管理、SOPS + age にしたら全部�
 emoji: "🔐"
 type: "tech"
 topics: ["SOPS", "age", "シークレット管理", "GitHubActions", "セキュリティ"]
-published: false
+published: true
 ---
 
 ## APIキーの置き場所に困る

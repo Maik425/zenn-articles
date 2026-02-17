@@ -3,7 +3,7 @@ title: "業務システムにLLMを組み込む実践パターン — 社内業�
 emoji: "🧠"
 type: "tech"
 topics: ["go", "llm", "anthropic", "ollama", "architecture"]
-published: false
+published: true
 ---
 
 ## はじめに

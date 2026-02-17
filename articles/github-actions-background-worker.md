@@ -3,7 +3,7 @@ title: "GitHub Actionsを個人開発のバックグラウンドワーカーに�
 emoji: "⚙️"
 type: "tech"
 topics: ["GitHubActions", "自動化", "CICD", "個人開発", "Python"]
-published: false
+published: true
 ---
 
 ## サーバーを持たずに自動化したかった

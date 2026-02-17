@@ -3,7 +3,7 @@ title: "GitHub Projects v2 API完全攻略 — 実務でハマった罠と突破
 emoji: "🎯"
 type: "tech"
 topics: ["GitHub", "GraphQL", "API", "自動化", "ProjectsV2"]
-published: false
+published: true
 ---
 
 ## やりたかったこと

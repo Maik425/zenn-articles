@@ -3,7 +3,7 @@ title: "Claude Codeのカスタムスキルで日常業務を自動化した話"
 emoji: "🤖"
 type: "tech"
 topics: ["claudecode", "ai", "automation", "cli", "productivity"]
-published: false
+published: true
 meta_description: "Claude Codeのカスタムスキル機能を使い、Issue作成・タスク管理・MTG録画・記事執筆まで日常業務を自動化した実例とノウハウを紹介。スラッシュコマンド1つで複雑な業務フローが動き出すまでの試行錯誤を、スキル8つぶん丸ごと解説します。"
 featured_image: "" # TODO: アイキャッチ画像を設定（推奨: 1200x630px）
 ---

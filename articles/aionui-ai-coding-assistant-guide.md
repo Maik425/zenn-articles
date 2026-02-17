@@ -3,7 +3,7 @@ title: "AionUi入門：8種類のAIコーディングアシスタントを一元
 emoji: "🖥️"
 type: "tech"
 topics: ["AionUi", "AIエージェント", "オープンソース", "ClaudeCode", "GeminiCLI"]
-published: false
+published: true
 ---
 
 ## 複数のAIアシスタントを1つのアプリで管理する

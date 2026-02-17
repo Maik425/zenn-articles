@@ -3,7 +3,7 @@ title: "Google製LangExtract入門：LLMでテキストから構造化データ�
 emoji: "🔍"
 type: "tech"
 topics: ["langextract", "LLM", "Python", "自然言語処理", "Gemini"]
-published: false
+published: true
 ---
 
 ## 非構造化テキストからの情報抽出、もっと楽にならないか

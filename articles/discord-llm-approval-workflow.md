@@ -3,7 +3,7 @@ title: "SNS投稿が面倒すぎたので、Discordの絵文字クリックだ�
 emoji: "🤖"
 type: "tech"
 topics: ["Discord", "LLM", "自動化", "SNS運用", "Python"]
-published: false
+published: true
 ---
 
 ## やりたかったこと
