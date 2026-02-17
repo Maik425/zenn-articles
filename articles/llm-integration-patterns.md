@@ -1,5 +1,5 @@
 ---
-title: "業務システムにLLMを組み込む実践パターン — 社内業務管理システム EastFlowの事例"
+title: "業務システムにLLMを組み込む実践パターン — 社内業務管理システムでの事例"
 emoji: "🧠"
 type: "tech"
 topics: ["go", "llm", "anthropic", "ollama", "architecture"]
@@ -14,7 +14,7 @@ SI側もSI側で、プロジェクトの契約管理や予算管理をスプレ�
 
 両方まとめてシステムにすればいい。メールの構造化はLLMにやらせる。
 
-そう考えて、社内の業務管理システム EastFlow を4日間で作った。Go + Next.js + PostgreSQL。メール受信からLLMによる自動分類・解析、案件や候補者の自動登録、マッチングまで一気通貫で動く。MCPサーバーも用意したので、Claude Codeなどからも EastFlow のデータを直接触れる。
+そう考えて、社内の業務管理システムを4日間で作った。Go + Next.js + PostgreSQL。メール受信からLLMによる自動分類・解析、案件や候補者の自動登録、マッチングまで一気通貫で動く。MCPサーバーも用意したので、Claude Codeなどからもシステムのデータを直接触れる。
 
 この記事ではLLM統合の部分に絞って、実装パターンと設計判断を書いていく。
 
@@ -129,7 +129,7 @@ func extractJSON(raw string) string {
 
 LLMは壊れる。APIが落ちる。レートリミットに引っかかる。意味不明なレスポンスが返ってくる。業務システムでLLMが不調だからメール処理できません、は許されない。
 
-ではどうするか。EastFlow では Chain-of-Responsibility パターンで複数プロバイダーを順番に試す Manager を実装した。
+ではどうするか。このシステムでは Chain-of-Responsibility パターンで複数プロバイダーを順番に試す Manager を実装した。
 
 ```go
 type Manager struct {
@@ -281,7 +281,7 @@ func (p *AnthropicProvider) ParseEmail(ctx context.Context, input ParseEmailInpu
 
 LLMを業務システムに入れるうえでいちばん大事だったのは、壊れる前提で作ること。同じ入力でも違う出力が返る。APIが突然エラーを吐く。それが日常だ。
 
-EastFlowでは4つのレイヤーで耐障害性を確保した。
+このシステムでは4つのレイヤーで耐障害性を確保した。
 
 ### Layer 1 — Anthropic APIのリトライ
 
@@ -386,7 +386,7 @@ return fmt.Errorf("all providers failed for %s: %s",
 
 LLMの出力は非決定的だからテストできない、とよく言われる。実際にはかなりの範囲をテストできる。ただし工夫がいる。
 
-EastFlowでは `httptest` でLLM APIのモックサーバーを立てて、プロバイダーの実装をテストしている。
+このシステムでは `httptest` でLLM APIのモックサーバーを立てて、プロバイダーの実装をテストしている。
 
 ```go
 func TestAnthropicProvider_ClassifyEmail(t *testing.T) {
