@@ -1,0 +1,34 @@
+name: Announce Published Articles on X
+
+on:
+  push:
+    branches: [main]
+    paths: ['articles/*.md']
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install tweepy pyyaml
+
+      - name: Detect and announce published articles
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          ZENN_USERNAME: ${{ vars.ZENN_USERNAME }}
+          X_CONSUMER_KEY: ${{ secrets.X_CONSUMER_KEY }}
+          X_CONSUMER_SECRET: ${{ secrets.X_CONSUMER_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+        run: python scripts/announce_published.py
